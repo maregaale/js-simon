@@ -1,4 +1,3 @@
-// Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 
 // variabili
@@ -41,10 +40,15 @@ var countdown = setInterval(function () {
 
   if (numCountdown == 0) {
     clearInterval(countdown);
+    // 3. l'utente dopo i 30 secondi inserisce per 5 volte un numero
+    var numeriUtente = [];
+    for (var j = 0; j < 5; j++) {
+      numeriUtente[j] = parseInt(prompt("inserisci il " + (j + 1) + "° " + "numero"));
+    }
+    console.log(numeriUtente);
   }
 
   numCountdown -= 1;
 
-  // 3. l'utente dopo i 30 secondi inserisce per 5 volte un numero
 
 }, 1000);
