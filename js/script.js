@@ -4,7 +4,7 @@ var numeriUtente = "";
 var risultato = "i numeri da ricordare sono: " + " ";
 var numeriUtente = [];
 var numOk = [];
-var numCountdown = 30;
+var numCountdown = 5;
 
 // funzioni
 // funzione che determina un numero random
@@ -42,7 +42,14 @@ var countdown = setInterval(function () {
 
     // 3. l'utente dopo i 30 secondi inserisce per 5 volte un numero
     for (var j = 0; j < 5; j++) {
-      numeriUtente[j] = parseInt(prompt("inserisci il " + (j + 1) + "° " + "numero"));
+      var numeroUtente = parseInt(prompt("inserisci il " + (j + 1) + "° " + "numero"));
+
+      if (numeriUtente.includes(numeroUtente) == false) {
+        numeriUtente.push(numeroUtente);
+      } else {
+        j--;
+        alert("non inserire numeri uguali");
+      }
     }
 
     // 4. controllo se tra i numeri inseriti dall'utente ce n'è uno di quelli nell'alert
@@ -53,8 +60,15 @@ var countdown = setInterval(function () {
     }
 
     // 5. stampo il risultato in quantità e qualità dei numeri ricordati
-    console.log("hai ricordato " + numOk.length + " numeri");
-    console.log("i numeri da te ricordati sono: " + numOk);
+    if (numOk.length == 0) {
+      console.log("mi spiace non hai indovinato nessun numero");
+    } else if (numOk.length == 1) {
+      console.log("hai ricordato " + numOk.length + " numero");
+      console.log("il numero da te ricordato è: " + numOk);
+    } else {
+      console.log("hai ricordato " + numOk.length + " numeri");
+      console.log("i numeri da te ricordati sono: " + numOk);
+    }
   }
 
   numCountdown -= 1;
